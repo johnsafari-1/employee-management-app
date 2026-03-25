@@ -3,50 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Management System - Home</title>
+    <title>Home - Employee Management System</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <!-- Navigation Bar -->
-    <header>
-        <div class="navbar">
+    <nav class="navbar">
+        <div class="container">
             <div class="logo">Employee Management System</div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="new-contact.html">New Contact</a></li>
-                    <li><a href="view-contacts.html">View All Contacts</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Main Content Area -->
-    <main>
-        <h1>Welcome to the Employee Management System</h1>
-        
-        <p class="description">
-            This application streamlines the process of managing your workforce. 
-            You can easily add new employee details, update contact information, 
-            and view a comprehensive list of all staff members in one secure location.
-        </p>
-
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-
-        <div style="text-align: left;">
-            <h3>Quick Actions:</h3>
-            <ul>
-                <li>Add a new employee profile.</li>
-                <li>Search for specific contact details.</li>
-                <li>Review the full employee directory.</li>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="new-contact.html">New Contact</a></li>
+                <li><a href="view-contacts.html">View All Contacts</a></li>
             </ul>
         </div>
-    </main>
+    </nav>
+    <main class="container">
+        <div class="hero-section">
+            <h1>Welcome to Employee Management System</h1>
+            <p class="description">
+                 This application streamlines the process of managing your workforce. 
+            You can easily add new employee details, update contact information, 
+            and view a comprehensive list of all staff members in one secure location.
+            </p>
+            <div class="cta-buttons">
+                <a href="new-contact.html" class="btn btn-primary">Add New Employee</a>
+                <a href="view-contacts.html" class="btn btn-secondary">View All Contacts</a>
+            </div>
+        </div>
 
-    <!-- Footer -->
+        <div class="features">
+            <div class="feature-card">
+                <h3>📝 Easy Data Entry</h3>
+                <p>Quickly add new employee details with our simple form interface</p>
+            </div>
+            <div class="feature-card">
+                <h3>👥 View Records</h3>
+                <p>Access and manage all employee contact information in one place</p>
+            </div>
+            <div class="feature-card">
+                <h3>✏️ Edit & Delete</h3>
+                <p>Update or remove employee records with just a click</p>
+            </div>
+        </div>
+    </main>
     <footer>
         <p>&copy; 2026 Employee Management System. All rights reserved.</p>
     </footer>
 
+    <script src="main.js"></script>
 </body>
 </html>
