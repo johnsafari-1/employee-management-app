@@ -4,143 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Contacts - Employee Management System</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <!-- Navigation Bar (consistent across all pages) -->
-    <header>
-        <div class="navbar">
+    <nav class="navbar">
+        <div class="container">
             <div class="logo">Employee Management System</div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="new-contact.html">New Contact</a></li>
-                    <li><a href="view-contacts.html" style="color: #3498db;">View All Contacts</a></li>
-                </ul>
-            </nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="new-contact.html">New Contact</a></li>
+                <li><a href="view-contacts.html" class="active">View All Contacts</a></li>
+            </ul>
         </div>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-        <h1>All Contacts</h1>
-        
-        <!-- Controls: Search + Add New -->
-        <div class="controls">
-            <input type="text" class="search-box" id="searchInput" placeholder="🔍 Search by name, email, or department...">
-            <a href="new-contact.html" class="add-btn">+ Add New Contact</a>
-        </div>
-
-        <!-- Contacts Table -->
-        <div class="table-container">
-            <table id="contactsTable">
-                <thead>
+    </nav>
+    <main class="container">
+<h1>All Employee Contacts</h1>   
+ <div class="table-container">
+  <table class="contacts-table">
+     <thead>
+        <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Department</th>
+        <th>Actions</th>
+             </tr>
+            </thead>
+ <tbody id="contactsTableBody">
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Department</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="tableBody">
-                    <!-- Sample Data (Replace with dynamic data from backend/localStorage) -->
-                    <tr>
-                        <td>John Nzai</td>
-                        <td>john@example.com</td>
-                        <td>(123) 456-7890</td>
+                        <td>Joshua Mutai</td>
+                        <td>joshua@gmail.com</td>
+                        <td>+1234567890</td>
                         <td>IT</td>
                         <td class="actions">
-                            <button class="btn btn-view">View</button>
-                            <button class="btn btn-edit">Edit</button>
-                            <button class="btn btn-delete">Delete</button>
+                            <button class="btn btn-small btn-details" onclick="viewDetails('John Doe', 'john.doe@company.com', '+1234567890', 'IT', 'Software Developer')">Details</button>
+                            <button class="btn btn-small btn-edit" onclick="editContact('John Doe')">Edit</button>
+                            <button class="btn btn-small btn-delete" onclick="deleteContact('John Doe')">Delete</button>
                         </td>
                     </tr>
                     <tr>
-                        <td>Sarah Mwangi</td>
-                        <td>sarah.m@company.com</td>
-                        <td>(234) 567-8901</td>
+                        <td>Jane Smith</td>
+                        <td>jane@gmail.com</td>
+                        <td>+1234567891</td>
                         <td>Human Resources</td>
                         <td class="actions">
-                            <button class="btn btn-view">View</button>
-                            <button class="btn btn-edit">Edit</button>
-                            <button class="btn btn-delete">Delete</button>
+                            <button class="btn btn-small btn-details" onclick="viewDetails('Jane Smith', 'jane.smith@company.com', '+1234567891', 'Human Resources', 'HR Manager')">Details</button>
+                            <button class="btn btn-small btn-edit" onclick="editContact('Jane Smith')">Edit</button>
+                            <button class="btn btn-small btn-delete" onclick="deleteContact('Jane Smith')">Delete</button>
                         </td>
                     </tr>
                     <tr>
-                        <td>David Omondi</td>
-                        <td>d.omondi@company.com</td>
-                        <td>(345) 678-9012</td>
+                        <td>john nzai</td>
+                        <td>john@gmail.com</td>
+                        <td>+1234567892</td>
                         <td>Finance</td>
                         <td class="actions">
-                            <button class="btn btn-view">View</button>
-                            <button class="btn btn-edit">Edit</button>
-                            <button class="btn btn-delete">Delete</button>
+                            <button class="btn btn-small btn-details" onclick="viewDetails('Michael Johnson', 'michael.j@company.com', '+1234567892', 'Finance', 'Accountant')">Details</button>
+                            <button class="btn btn-small btn-edit" onclick="editContact('Michael Johnson')">Edit</button>
+                            <button class="btn btn-small btn-delete" onclick="deleteContact('Michael Johnson')">Delete</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            
-            <!-- Empty State (hidden by default, show via JS if no contacts) -->
-            <div id="emptyState" class="empty-state" style="display: none;">
-                <p>📭 No contacts found.</p>
-                <p><a href="new-contact.html">Add your first contact</a> to get started!</p>
-            </div>
         </div>
     </main>
-
     <footer>
         <p>&copy; 2026 Employee Management System. All rights reserved.</p>
     </footer>
 
-    <!-- Optional: JavaScript for interactivity -->
-    <script>
-        // Simple search functionality (client-side filtering)
-        document.getElementById('searchInput').addEventListener('keyup', function(e) {
-            const term = e.target.value.toLowerCase();
-            const rows = document.querySelectorAll('#tableBody tr');
-            let visibleCount = 0;
-            
-            rows.forEach(row => {
-                const text = row.textContent.toLowerCase();
-                if (text.includes(term)) {
-                    row.style.display = '';
-                    visibleCount++;
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-            
-            // Show/hide empty state
-            const emptyState = document.getElementById('emptyState');
-            const table = document.querySelector('table');
-            if (visibleCount === 0 && term !== '') {
-                emptyState.style.display = 'block';
-                table.style.display = 'none';
-            } else {
-                emptyState.style.display = 'none';
-                table.style.display = 'table';
-            }
-        });
-
-        // Optional: Add click handlers for Edit/Delete buttons
-        document.querySelectorAll('.btn-delete').forEach(btn => {
-            btn.addEventListener('click', function() {
-                if (confirm('Are you sure you want to delete this contact?')) {
-                    this.closest('tr').remove();
-                    // In a real app: send DELETE request to backend here
-                }
-            });
-        });
-
-        document.querySelectorAll('.btn-edit').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const name = this.closest('tr').querySelector('td:first-child').textContent;
-                alert(`Edit contact: ${name}\n\n(In a real app, this would open an edit form)`);
-                // In a real app: redirect to edit page with contact ID
-            });
-        });
-    </script>
-
+    <script src="main.js"></script>
 </body>
 </html>
